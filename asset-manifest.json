@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.fc6d3362.css",
-    "main.js": "/static/js/main.47552095.js",
-    "static/media/OpenSans-Bold.ttf": "/static/media/OpenSans-Bold.fc10ccf11a61bac919b9.ttf",
-    "static/media/OpenSans-ExtraBold.ttf": "/static/media/OpenSans-ExtraBold.7a42b1f780edcefed802.ttf",
-    "static/media/OpenSans-Light.ttf": "/static/media/OpenSans-Light.ec993defe70da9dbbc3f.ttf",
-    "static/media/OpenSans-SemiBold.ttf": "/static/media/OpenSans-SemiBold.d31d0aaa8d4384de5eeb.ttf",
-    "static/media/OpenSans-Regular.ttf": "/static/media/OpenSans-Regular.9ccd5e1b1dbea150336d.ttf",
-    "index.html": "/index.html",
-    "static/media/clipboard.svg": "/static/media/clipboard.57fae70f4ad883f77dd1256d1a15b53d.svg",
-    "static/media/github-green.svg": "/static/media/github-green.7959b312e75e5fbeb669c30e81d1fb5a.svg",
-    "static/media/github.svg": "/static/media/github.3a4f66df2068ac5ba4ef5b97006852ca.svg"
+    "main.css": "/cli-explorer/static/css/main.1da2bd9d.css",
+    "main.js": "/cli-explorer/static/js/main.a394bf11.js",
+    "static/media/OpenSans-Bold.ttf": "/cli-explorer/static/media/OpenSans-Bold.fc10ccf11a61bac919b9.ttf",
+    "static/media/OpenSans-ExtraBold.ttf": "/cli-explorer/static/media/OpenSans-ExtraBold.7a42b1f780edcefed802.ttf",
+    "static/media/OpenSans-Light.ttf": "/cli-explorer/static/media/OpenSans-Light.ec993defe70da9dbbc3f.ttf",
+    "static/media/OpenSans-SemiBold.ttf": "/cli-explorer/static/media/OpenSans-SemiBold.d31d0aaa8d4384de5eeb.ttf",
+    "static/media/OpenSans-Regular.ttf": "/cli-explorer/static/media/OpenSans-Regular.9ccd5e1b1dbea150336d.ttf",
+    "index.html": "/cli-explorer/index.html",
+    "static/media/clipboard.svg": "/cli-explorer/static/media/clipboard.57fae70f4ad883f77dd1256d1a15b53d.svg",
+    "static/media/github-green.svg": "/cli-explorer/static/media/github-green.7959b312e75e5fbeb669c30e81d1fb5a.svg",
+    "static/media/github.svg": "/cli-explorer/static/media/github.3a4f66df2068ac5ba4ef5b97006852ca.svg"
   },
   "entrypoints": [
-    "static/css/main.fc6d3362.css",
-    "static/js/main.47552095.js"
+    "static/css/main.1da2bd9d.css",
+    "static/js/main.a394bf11.js"
   ]
 }
