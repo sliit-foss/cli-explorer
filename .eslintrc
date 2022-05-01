@@ -1,5 +1,5 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb-base"],
   "settings": {
     "react": {
@@ -39,6 +39,9 @@
     "react/jsx-filename-extension": "off",
     "guard-for-in": "off",
     "import/no-unresolved": "off",
-    "no-return-assign": "off"
+    "no-return-assign": "off",
+    "linebreak-style": 0,
+    "arrow-parens": "off",
+    "no-trailing-spaces": "off"
   }
 }
