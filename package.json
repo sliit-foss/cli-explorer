@@ -8,6 +8,7 @@
     "react": "^18.1.0",
     "react-device-detect": "^2.2.2",
     "react-dom": "^18.1.0",
+    "react-icons": "^4.3.1",
     "react-scripts": "5.0.1",
     "react-select": "^5.3.1",
     "react-typist": "^2.0.5"
@@ -17,12 +18,7 @@
     "build": "react-scripts build && cp -r src/assets/images/ build/images",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "lint:check": "eslint . --ext=js,jsx;  exit 0",
-    "lint:fix": "eslint . --ext=js,jsx --fix;  exit 0",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && rm -rf yarn.lock && npm install && npm start"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": [
     ">0.2%",
@@ -32,15 +28,6 @@
   ],
   "devDependencies": {
     "autoprefixer": "^10.4.5",
-    "eslint": "^8.2.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-react": "^7.28.0",
-    "eslint-plugin-react-hooks": "^4.3.0",
-    "@babel/eslint-parser": "^7.17.0",
-    "babel-eslint": "^10.1.0",
     "postcss": "^8.4.13",
     "tailwindcss": "^3.0.24"
   }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Select from "react-select";
 import clipboard from "assets/images/clipboard.svg";
-import { Footer, Nav } from "components/layout";
+
 import Typist from "react-typist";
 import { isMobile } from "react-device-detect";
 
@@ -108,8 +108,8 @@ function ExplorerContent() {
 
   return (
     <div>
-      <div className="container home__container">
-        <Nav />
+      <div className="container home__container ml-[6rem] ">
+        
         <div className="content">
           <div className="row">
             <div className="col-5">
@@ -207,7 +207,7 @@ function ExplorerContent() {
             </div>
           </div>
         </div>
-        <Footer />
+        
       </div>
     </div>
   );
