@@ -7,6 +7,7 @@
       "version": "16.6.0"
     }
   },
+  "requireConfigFile": false,
   "parserOptions": {
     "ecmaVersion": 9,
     "sourceType": "module",
@@ -42,6 +43,9 @@
     "no-return-assign": "off",
     "linebreak-style": 0,
     "arrow-parens": "off",
-    "no-trailing-spaces": "off"
+    "no-trailing-spaces": "off",
+    "indent": "off",
+    "no-unused-vars": "off",
+    "quotes": "off"
   }
 }
