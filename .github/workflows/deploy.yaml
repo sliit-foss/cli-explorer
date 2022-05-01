@@ -16,7 +16,7 @@ jobs:
           node-version: 16
 
       - name: Install dependancies
-        run: npm install
+        run: npm install -f
 
       - name: Build project
         run: npm run build
