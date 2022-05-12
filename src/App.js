@@ -5,7 +5,7 @@ import ExplorerContent from "components/explorerContent";
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="App flex">
         <SideNav />
         <ExplorerContent />
         <Footer />
