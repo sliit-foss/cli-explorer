@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Select from "react-select";
+import { Header } from "components/layout";
 import clipboard from "assets/images/clipboard.svg";
 
 import Typist from "react-typist";
@@ -107,8 +108,9 @@ function ExplorerContent() {
   };
 
   return (
-    <div>
-      <div className="container home__container ml-[6rem] ">
+    <div className="w-full">
+      <Header />
+      <div className=" ml-[6rem] ">
         
         <div>
           <div className="w-full bg-red-600 flex justify-between items-center">
