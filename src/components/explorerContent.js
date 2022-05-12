@@ -110,11 +110,11 @@ function ExplorerContent() {
   return (
     <div className="w-full">
       <Header />
-      <div className=" ml-[6rem] ">
+      <div className=" mx-[6rem] ">
         
         <div>
-          <div className="w-full bg-red-600 flex justify-between items-center">
-            <div className="w-1/2 bg-yellow-600">
+          <div className="w-full flex justify-between items-center">
+            <div className="w-5/12">
               <h1 className="text-5xl mb-10">
                 CLI EXPLORER
               </h1>
@@ -128,7 +128,7 @@ function ExplorerContent() {
 
                 <Select
                   placeholder="..."
-                  className="my-8 w-8/12"
+                  className="my-8 w-10/12"
                   classNamePrefix="options-select"
                   isSearchable={true}
                   onChange={onFirstChange}
@@ -161,14 +161,14 @@ function ExplorerContent() {
                 ) : null}
               </div>
             </div>
-            <div className="w-1/2">
+            <div className="w-7/12">
               <div
                 className={`board__group board__group--1 ${
                   isMobile && !state.usage ? " d-none" : ""
                 }`}
               >
-                <h2 className="board__title  dark-white">Usage</h2>
-                <div className="board board--1">
+                <h2 className="mb-8">Usage</h2>
+                <div className="bg-blue-primary min-h-36 w-full rounded-md">
                   <pre>
                     {state.usage.length ? (
                       <Typist cursor={{ show: false }}>{state.usage}</Typist>
