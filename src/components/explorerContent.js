@@ -110,23 +110,23 @@ function ExplorerContent() {
     <div>
       <div className="container home__container ml-[6rem] ">
         
-        <div className="content">
-          <div className="row">
-            <div className="col-5">
-              <h2 className="content__title  dark-white">
-                Git <span className="text-7xl">Command</span> Explorer
-              </h2>
-              <p className="content__subtitle dark-grey">
+        <div>
+          <div className="w-full bg-red-600 flex justify-between items-center">
+            <div className="w-1/2 bg-yellow-600">
+              <h1 className="text-5xl mb-10">
+                CLI EXPLORER
+              </h1>
+              <p className="my-20 w-4/12">
                 Find the right commands you need without digging through the
                 web.
               </p>
 
-              <div className="options">
-                <h4 className="options__title">I want to:</h4>
+              <div>
+                <h4 className="my-8">I want to:</h4>
 
                 <Select
                   placeholder="..."
-                  className="options-select"
+                  className="my-8 w-8/12"
                   classNamePrefix="options-select"
                   isSearchable={true}
                   onChange={onFirstChange}
@@ -159,7 +159,7 @@ function ExplorerContent() {
                 ) : null}
               </div>
             </div>
-            <div className="col-7 boards">
+            <div className="w-1/2">
               <div
                 className={`board__group board__group--1 ${
                   isMobile && !state.usage ? " d-none" : ""
