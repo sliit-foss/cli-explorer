@@ -6,6 +6,9 @@ module.exports = {
       colors: {
         blue: { primary: "#00183A", light: "#B9E6FF", bg: "#EAFBFF" },
       },
+      minHeight: {
+        36: "9rem"
+      },
     },
   },
 
