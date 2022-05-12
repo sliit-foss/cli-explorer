@@ -35,7 +35,7 @@ function SideNav() {
   return (
     <div className="">
       <div
-        className="group absolute z-40 flex flex-col h-screen w-[6rem] hover:w-[14rem] bg-blue-primary shadow-right px-2  ease-in-out duration-300 "
+        className="group z-40 flex flex-col h-screen w-[6rem] hover:w-[14rem] bg-blue-primary shadow-right px-2  ease-in-out duration-300 "
         
       >
         <div className="flex flex-col mt-3.5">

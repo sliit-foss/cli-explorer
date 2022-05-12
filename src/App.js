@@ -5,7 +5,7 @@ import ExplorerContent from "components/explorerContent";
 class App extends Component {
   render() {
     return (
-      <div className="bg-blue-bg">
+      <div className="App flex bg-blue-bg">
         <SideNav />
         <Header />
         <ExplorerContent />
