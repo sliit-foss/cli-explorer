@@ -1,6 +1,6 @@
 {
-  "short_name": "Git Explorer",
-  "name": "Git Explorer",
+  "short_name": "CLI Explorer",
+  "name": "CLI Explorer",
   "icons": [
     {
       "src": "favicon.ico",
