@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Select from "react-select";
 import { Header } from "components/layout";
 import clipboard from "assets/images/clipboard.svg";
+import { optionsFirst, optionsSecond, optionsThird } from "../data";
 
 import Typist from "react-typist";
 import { isMobile } from "react-device-detect";
@@ -19,57 +20,79 @@ function ExplorerContent() {
   });
 
   const onFirstChange = (selectedOption) => {
-    // if (state.secondOption) {
-    //   setStates({
-    //     firstOption: selectedOption,
-    //     showSecond: true,
-    //     secondOption: null,
-    //     showThird: false,
-    //     nb: '',
-    //     usage: ''
-    //   });
-    // } else if (optionsSecond[selectedOption.value].length === 1) {
-    //   setState({ firstOption: selectedOption, showSecond: true });
-    //   onSecondChange(optionsSecond[selectedOption.value][0]);
-    // } else {
-    //   setState({ firstOption: selectedOption, showSecond: true });
-    // }
+    console.warn(selectedOption);
+    if (state.secondOption) {
+      setStates({
+        firstOption: selectedOption,
+        showSecond: true,
+        secondOption: null,
+        showThird: false,
+        nb: "",
+        usage: "",
+      });
+      console.log("1");
+    } else if (optionsSecond[selectedOption.value].length === 1) {
+      console.log("2");
+
+      setStates(
+        {
+          ...state,
+          firstOption: selectedOption,
+          showSecond: true,
+        }
+
+        // { firstOption: selectedOption, showSecond: true }
+      );
+      onSecondChange(optionsSecond[selectedOption.value][0]);
+    } else {
+      console.log(state);
+      setStates(
+        {
+          ...state,
+          firstOption: selectedOption,
+          showSecond: true,
+        }
+        // { firstOption: selectedOption, showSecond: true, secondOption: optionsSecond}
+      );
+      console.log(state);
+      console.log("3");
+    }
   };
 
   const onSecondChange = (selectedOption) => {
-    // if (selectedOption.usage) {
-    //   setState({ nb: '', usage: '' }, () => {
-    //     setState({
-    //       secondOption: selectedOption,
-    //       showThird: false,
-    //       nb: selectedOption.nb,
-    //       usage: selectedOption.usage,
-    //       thirdOption: null
-    //     });
-    //   });
-    // } else if (optionsThird[selectedOption.value].length === 1) {
-    //   setState({
-    //     secondOption: selectedOption,
-    //     showThird: true,
-    //     thirdOption: null,
-    //     nb: '',
-    //     usage: ''
-    //   });
-    //   onThirdChange(optionsThird[selectedOption.value][0]);
-    // } else {
-    //   setState({
-    //     secondOption: selectedOption,
-    //     showThird: true,
-    //     thirdOption: null,
-    //     nb: '',
-    //     usage: ''
-    //   });
-    // }
+    console.log(selectedOption);
+    if (selectedOption.usage) {
+      setStates({
+        ...state,
+        secondOption: {value: selectedOption.label},
+        showThird: false,
+        nb: selectedOption.nb,
+        usage: selectedOption.usage,
+        thirdOption: null,
+      });
+    } else if (optionsThird[selectedOption.value].length === 1) {
+      setStates({
+        secondOption: selectedOption,
+        showThird: true,
+        thirdOption: null,
+        nb: "",
+        usage: "",
+      });
+      onThirdChange(optionsThird[selectedOption.value][0]);
+    } else {
+      setStates({
+        secondOption: selectedOption,
+        showThird: true,
+        thirdOption: null,
+        nb: "",
+        usage: "",
+      });
+    }
   };
 
   const onThirdChange = (selectedOption) => {
-    //   setState({ nb: '', usage: '' }, () => {
-    //     setState({
+    //   setStates({ nb: '', usage: '' }, () => {
+    //     setStates({
     //       thirdOption: selectedOption,
     //       nb: selectedOption.nb,
     //       usage: selectedOption.usage
@@ -77,12 +100,12 @@ function ExplorerContent() {
     //   });
     // };
     // onCopy = () => {
-    //   setState({ copied: true }, () => {
+    //   setStates({ copied: true }, () => {
     //     if (timeout) {
     //       clearInterval(timeout);
     //     }
     //   timeout = setTimeout(() => {
-    //     setState({ copied: false });
+    //     setStates({ copied: false });
     //   }, 1000);
     // });
   };
@@ -111,13 +134,10 @@ function ExplorerContent() {
     <div className="w-full">
       <Header />
       <div className=" mx-[6rem] ">
-        
         <div>
           <div className="w-full flex justify-between items-center">
             <div className="w-5/12">
-              <h1 className="text-5xl mb-10">
-                CLI EXPLORER
-              </h1>
+              <h1 className="text-5xl mb-10">CLI EXPLORER</h1>
               <p className="my-20 w-4/12">
                 Find the right commands you need without digging through the
                 web.
@@ -133,7 +153,7 @@ function ExplorerContent() {
                   isSearchable={true}
                   onChange={onFirstChange}
                   value={state.firstOption}
-                  options={state.optionsFirst}
+                  options={optionsFirst}
                 />
 
                 {state.showSecond ? (
@@ -144,7 +164,7 @@ function ExplorerContent() {
                     isSearchable={true}
                     onChange={onSecondChange}
                     value={state.secondOption}
-                    options={state.optionsSecond[state.firstOption.value]}
+                    options={optionsSecond[state.firstOption.value]}
                   />
                 ) : null}
 
@@ -209,7 +229,6 @@ function ExplorerContent() {
             </div>
           </div>
         </div>
-        
       </div>
     </div>
   );
