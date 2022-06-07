@@ -3,12 +3,11 @@ import Select from "react-select";
 import { Header } from "components/layout";
 import clipboard from "assets/images/clipboard.svg";
 import { optionsFirst, optionsSecond, optionsThird } from "../data";
-
 import Typist from "react-typist";
 import { isMobile } from "react-device-detect";
 
 function ExplorerContent() {
-  const [state, setStates] = useState({
+  let data = {
     firstOption: null,
     showSecond: false,
     secondOption: null,
@@ -17,10 +16,11 @@ function ExplorerContent() {
     nb: "",
     usage: "",
     copied: false,
-  });
+  };
+
+  const [state, setStates] = useState(data);
 
   const onFirstChange = (selectedOption) => {
-    console.warn(selectedOption);
     if (state.secondOption) {
       setStates({
         firstOption: selectedOption,
@@ -30,41 +30,24 @@ function ExplorerContent() {
         nb: "",
         usage: "",
       });
-      console.log("1");
     } else if (optionsSecond[selectedOption.value].length === 1) {
-      console.log("2");
-
-      setStates(
-        {
-          ...state,
-          firstOption: selectedOption,
-          showSecond: true,
-        }
-
-        // { firstOption: selectedOption, showSecond: true }
-      );
+      data = { ...data, firstOption: selectedOption, showSecond: true };
+      setStates(data);
       onSecondChange(optionsSecond[selectedOption.value][0]);
     } else {
-      console.log(state);
-      setStates(
-        {
-          ...state,
-          firstOption: selectedOption,
-          showSecond: true,
-        }
-        // { firstOption: selectedOption, showSecond: true, secondOption: optionsSecond}
-      );
-      console.log(state);
-      console.log("3");
+      setStates({
+        ...data,
+        firstOption: selectedOption,
+        showSecond: true,
+      });
     }
   };
 
   const onSecondChange = (selectedOption) => {
-    console.log(selectedOption);
     if (selectedOption.usage) {
       setStates({
-        ...state,
-        secondOption: {value: selectedOption.label},
+        ...data,
+        secondOption: selectedOption,
         showThird: false,
         nb: selectedOption.nb,
         usage: selectedOption.usage,
@@ -72,6 +55,7 @@ function ExplorerContent() {
       });
     } else if (optionsThird[selectedOption.value].length === 1) {
       setStates({
+        ...data,
         secondOption: selectedOption,
         showThird: true,
         thirdOption: null,
@@ -81,6 +65,7 @@ function ExplorerContent() {
       onThirdChange(optionsThird[selectedOption.value][0]);
     } else {
       setStates({
+        ...data,
         secondOption: selectedOption,
         showThird: true,
         thirdOption: null,
@@ -188,7 +173,7 @@ function ExplorerContent() {
                 }`}
               >
                 <h2 className="mb-8">Usage</h2>
-                <div className="bg-blue-primary min-h-36 w-full rounded-md">
+                <div className="bg-blue-primary text-white min-h-36 w-full rounded-md">
                   <pre>
                     {state.usage.length ? (
                       <Typist cursor={{ show: false }}>{state.usage}</Typist>
