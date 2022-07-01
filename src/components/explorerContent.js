@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import { Header } from "components/layout";
 import clipboard from "assets/images/clipboard.svg";
@@ -19,6 +19,10 @@ function ExplorerContent() {
   };
 
   const [state, setStates] = useState(data);
+  
+  // useEffect((state) => {
+  //   setStates(state);
+  // },[state]);
 
   const onFirstChange = (selectedOption) => {
     if (state.secondOption) {
@@ -63,36 +67,44 @@ function ExplorerContent() {
         usage: "",
       });
       onThirdChange(optionsThird[selectedOption.value][0]);
+      console.log(state.showThird);
     } else {
-      setStates({
-        ...data,
-        secondOption: selectedOption,
-        showThird: true,
-        thirdOption: null,
-        nb: "",
-        usage: "",
-      });
+        setStates({
+          ...data,
+          secondOption: selectedOption,
+          showThird: true,
+          thirdOption: null,
+          nb: "",
+          usage: "",
+        });        
+      console.log(JSON.stringify(state)) 
     }
+   
   };
 
   const onThirdChange = (selectedOption) => {
-    //   setStates({ nb: '', usage: '' }, () => {
-    //     setStates({
-    //       thirdOption: selectedOption,
-    //       nb: selectedOption.nb,
-    //       usage: selectedOption.usage
-    //     });
-    //   });
-    // };
-    // onCopy = () => {
-    //   setStates({ copied: true }, () => {
-    //     if (timeout) {
-    //       clearInterval(timeout);
-    //     }
-    //   timeout = setTimeout(() => {
-    //     setStates({ copied: false });
-    //   }, 1000);
+    setStates({
+      ...data,
+      thirdOption: selectedOption,
+      nb: selectedOption.nb,
+      usage: selectedOption.usage,
+    });
+  };
+
+  const onCopy = () => {
+    // setStates({
+    //   ...data,
+    //   copied: true
     // });
+    // if (timeout) {
+    //     clearInterval(timeout);
+    // }
+    // timeout = setTimeout(() => {
+    //   setStates({
+    //     ...data,
+    //     copied: false
+    //   });
+    // }, 1000);
   };
 
   const copyUsage = () => {
@@ -144,7 +156,7 @@ function ExplorerContent() {
                 {state.showSecond ? (
                   <Select
                     placeholder="..."
-                    className="options-select"
+                    className="my-8 w-10/12"
                     classNamePrefix="options-select"
                     isSearchable={true}
                     onChange={onSecondChange}
@@ -156,12 +168,12 @@ function ExplorerContent() {
                 {state.showThird ? (
                   <Select
                     placeholder="..."
-                    className="options-select"
+                    className="my-8 w-10/12"
                     classNamePrefix="options-select"
                     isSearchable={true}
                     onChange={onThirdChange}
                     value={state.thirdOption}
-                    options={state.optionsThird[state.secondOption.value]}
+                    options={optionsThird[state.secondOption.value]}
                   />
                 ) : null}
               </div>
@@ -172,8 +184,10 @@ function ExplorerContent() {
                   isMobile && !state.usage ? " d-none" : ""
                 }`}
               >
-                <h2 className="mb-8">Usage</h2>
-                <div className="bg-blue-primary text-white min-h-36 w-full rounded-md">
+                <h2 className="mb-8 font-bold text-3xl">Usage</h2>
+
+                <div className="relative bg-blue-primary text-white min-h-36 w-full rounded-md flex items-center justify-between pl-8 pr-8 mb-8">
+                  <div className="absolute w-4 bg-[#033888] left-0 h-full rounded-l-md"></div>
                   <pre>
                     {state.usage.length ? (
                       <Typist cursor={{ show: false }}>{state.usage}</Typist>
@@ -202,8 +216,11 @@ function ExplorerContent() {
 
                 {state.nb ? (
                   <div className="board__group board__group--2">
-                    <h2 className="board__title  dark-white">Note</h2>
-                    <div className="board board--2">
+                    <h2 className="board__title  dark-white mb-8 font-bold text-3xl">
+                      Note
+                    </h2>
+                    <div className="relative bg-blue-primary text-white min-h-36 w-full rounded-md flex items-center justify-between pl-8 pr-4">
+                      <div className="absolute w-4 bg-[#033888] left-0 h-full rounded-l-md"></div>
                       <pre>
                         <Typist cursor={{ show: false }}>{state.nb}</Typist>
                       </pre>
