@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   FaYarn,
   FaVuejs,
@@ -13,7 +13,15 @@ import { AiFillGithub } from "react-icons/ai";
 import { SiNestjs, SiNextdotjs, SiHeroku } from "react-icons/si";
 import { RiFlutterFill } from "react-icons/ri";
 
+
+
+
 function SideNav() {
+
+  
+const [selectedItem ,  setSelectedItem] = useState("Heroku")
+
+
   const navItems = [
     { name: FaLinux, desc: "Linux", link: "https://www.linux.org/" },
     {
@@ -32,10 +40,12 @@ function SideNav() {
     { name: SiHeroku, desc: "Heroku", link: "https://www.heroku.com/" },
   ];
 
+
+
   return (
     <div className="">
       <div
-        className="group z-40 flex flex-col h-screen w-[6rem] hover:w-[14rem] bg-blue-primary shadow-right px-2  ease-in-out duration-300 "
+        className="fixed group z-40 flex flex-col h-screen w-[6rem] md:hover:w-[14rem] bg-blue-primary shadow-right px-2  ease-in-out duration-300 "
         
       >
         <div className="flex flex-col mt-3.5">
@@ -46,10 +56,11 @@ function SideNav() {
                 <a href={Item.link}>
                   <div className="flex flex-row justify-start items-center">
                     <div className="my-3 ml-[0.8rem]">
-                    <Item.name className="text-white cursor-pointer w-12 h-12 hover:text-blue-light transition-all duration-300" />
+                    <Item.name  className={`${Item.desc === selectedItem ? "text-red-400" : "text-white"} cursor-pointer w-12 h-12 hover:text-blue-light transition-all duration-300`} />
+                    {console.log(Item.name)}
                     </div>
                     <span
-                      className={`cursor-pointer opacity-0 hover:text-blue-light pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto items-center pl-5 text-2xl text-white transition ease-in duration-300 `}
+                      className={`hidden md:flex cursor-pointer opacity-0 hover:text-blue-light pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto items-center pl-5 text-2xl text-white transition ease-in duration-300 `}
                     >
                       {Item.desc}
                     </span>

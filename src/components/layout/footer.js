@@ -4,7 +4,7 @@ import github from 'assets/images/github.svg';
 import githubGreen from 'assets/images/github-green.svg';
 
 const Footer = props => (
-  <footer className = 'fixed bottom-0 w-full p-2 ml-[6rem]'>
+  <footer className = 'fixed bottom-0 w-full p-2 flex'>
     <div className = 'absolute flex w-full h-full justify-end items-center bottom-0 left-0 pr-[6rem]'>
       <a href = 'https://github.com/sliit-foss/cli-explorer' target = '_blank'><img src = {github} className = 'w-14 h-14 m-2 mb-6 mr-6'></img></a>
     </div>
