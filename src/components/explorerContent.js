@@ -1,90 +1,111 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import { Header } from "components/layout";
 import clipboard from "assets/images/clipboard.svg";
-
+import { optionsFirst, optionsSecond, optionsThird } from "../data";
 import Typist from "react-typist";
 import { isMobile } from "react-device-detect";
 
+let data = {
+  firstOption: null,
+  showSecond: false,
+  secondOption: null,
+  showThird: false,
+  thirdOption: null,
+  nb: "",
+  usage: "",
+  copied: false,
+};
+
 function ExplorerContent() {
-  const [state, setStates] = useState({
-    firstOption: null,
-    showSecond: false,
-    secondOption: null,
-    showThird: false,
-    thirdOption: null,
-    nb: "",
-    usage: "",
-    copied: false,
-  });
+  const [state, setStates] = useState(data);
 
   const onFirstChange = (selectedOption) => {
-    // if (state.secondOption) {
-    //   setStates({
-    //     firstOption: selectedOption,
-    //     showSecond: true,
-    //     secondOption: null,
-    //     showThird: false,
-    //     nb: '',
-    //     usage: ''
-    //   });
-    // } else if (optionsSecond[selectedOption.value].length === 1) {
-    //   setState({ firstOption: selectedOption, showSecond: true });
-    //   onSecondChange(optionsSecond[selectedOption.value][0]);
-    // } else {
-    //   setState({ firstOption: selectedOption, showSecond: true });
-    // }
+    if (state.secondOption) {
+      data = {
+        firstOption: selectedOption,
+        showSecond: true,
+        secondOption: null,
+        showThird: false,
+        nb: "",
+        usage: "",
+      };
+      setStates(data);
+    } else if (optionsSecond[selectedOption.value].length === 1) {
+      data = { ...data, firstOption: selectedOption, showSecond: true };
+      setStates(data);
+      onSecondChange(optionsSecond[selectedOption.value][0]);
+    } else {
+      data = {
+        ...data,
+        firstOption: selectedOption,
+        showSecond: true,
+      };
+      setStates(data);
+    }
   };
 
   const onSecondChange = (selectedOption) => {
-    // if (selectedOption.usage) {
-    //   setState({ nb: '', usage: '' }, () => {
-    //     setState({
-    //       secondOption: selectedOption,
-    //       showThird: false,
-    //       nb: selectedOption.nb,
-    //       usage: selectedOption.usage,
-    //       thirdOption: null
-    //     });
-    //   });
-    // } else if (optionsThird[selectedOption.value].length === 1) {
-    //   setState({
-    //     secondOption: selectedOption,
-    //     showThird: true,
-    //     thirdOption: null,
-    //     nb: '',
-    //     usage: ''
-    //   });
-    //   onThirdChange(optionsThird[selectedOption.value][0]);
-    // } else {
-    //   setState({
-    //     secondOption: selectedOption,
-    //     showThird: true,
-    //     thirdOption: null,
-    //     nb: '',
-    //     usage: ''
-    //   });
-    // }
+    if (selectedOption.usage) {
+      data = {
+        ...data,
+        secondOption: selectedOption,
+        showThird: false,
+        nb: selectedOption.nb,
+        usage: selectedOption.usage,
+        thirdOption: null,
+      };
+      setStates(data);
+      // console.log(JSON.stringify(state) + "  drfergrer");
+    } else if (optionsThird[selectedOption.value].length === 1) {
+      data = {
+        ...data,
+        secondOption: selectedOption,
+        showThird: true,
+        thirdOption: null,
+        nb: "",
+        usage: "",
+      };
+      setStates(data);
+      onThirdChange(optionsThird[selectedOption.value][0]);
+      console.log(state.showThird);
+    } else {
+      data = {
+        ...state,
+        secondOption: selectedOption,
+        showThird: true,
+        thirdOption: null,
+        nb: "",
+        usage: "",
+      };
+      setStates(data);
+    }
   };
 
   const onThirdChange = (selectedOption) => {
-    //   setState({ nb: '', usage: '' }, () => {
-    //     setState({
-    //       thirdOption: selectedOption,
-    //       nb: selectedOption.nb,
-    //       usage: selectedOption.usage
-    //     });
-    //   });
-    // };
-    // onCopy = () => {
-    //   setState({ copied: true }, () => {
-    //     if (timeout) {
-    //       clearInterval(timeout);
-    //     }
-    //   timeout = setTimeout(() => {
-    //     setState({ copied: false });
-    //   }, 1000);
+    data = {
+      ...data,
+      thirdOption: selectedOption,
+      nb: selectedOption.nb,
+      usage: selectedOption.usage,
+    };
+    setStates(data);
+  };
+
+  const onCopy = () => {
+    // setStates({
+    //   ...data,
+    //   copied: true
     // });
+    // if (timeout) {
+    //     clearInterval(timeout);
+    // }
+    // timeout = setTimeout(() => {
+    //   setStates({
+    //     ...data,
+    //     copied: false
+    //   });
+    // }, 1000);
   };
 
   const copyUsage = () => {
@@ -111,13 +132,10 @@ function ExplorerContent() {
     <div className="w-full">
       <Header />
       <div className=" mx-[6rem] ">
-        
         <div>
           <div className="w-full flex justify-between items-center">
             <div className="w-5/12">
-              <h1 className="text-5xl mb-10">
-                CLI EXPLORER
-              </h1>
+              <h1 className="text-5xl mb-10">CLI EXPLORER</h1>
               <p className="my-20 w-4/12">
                 Find the right commands you need without digging through the
                 web.
@@ -133,30 +151,30 @@ function ExplorerContent() {
                   isSearchable={true}
                   onChange={onFirstChange}
                   value={state.firstOption}
-                  options={state.optionsFirst}
+                  options={optionsFirst}
                 />
 
                 {state.showSecond ? (
                   <Select
                     placeholder="..."
-                    className="options-select"
+                    className="my-8 w-10/12"
                     classNamePrefix="options-select"
                     isSearchable={true}
                     onChange={onSecondChange}
                     value={state.secondOption}
-                    options={state.optionsSecond[state.firstOption.value]}
+                    options={optionsSecond[state.firstOption.value]}
                   />
                 ) : null}
 
                 {state.showThird ? (
                   <Select
                     placeholder="..."
-                    className="options-select"
+                    className="my-8 w-10/12"
                     classNamePrefix="options-select"
                     isSearchable={true}
                     onChange={onThirdChange}
                     value={state.thirdOption}
-                    options={state.optionsThird[state.secondOption.value]}
+                    options={optionsThird[state.secondOption.value]}
                   />
                 ) : null}
               </div>
@@ -167,8 +185,10 @@ function ExplorerContent() {
                   isMobile && !state.usage ? " d-none" : ""
                 }`}
               >
-                <h2 className="mb-8">Usage</h2>
-                <div className="bg-blue-primary min-h-36 w-full rounded-md">
+                <h2 className="mb-8 font-bold text-3xl">Usage</h2>
+
+                <div className="relative bg-blue-primary text-white min-h-36 w-full rounded-md flex items-center justify-between pl-8 pr-8 mb-8">
+                  <div className="absolute w-4 bg-[#033888] left-0 h-full rounded-l-md"></div>
                   <pre>
                     {state.usage.length ? (
                       <Typist cursor={{ show: false }}>{state.usage}</Typist>
@@ -197,8 +217,11 @@ function ExplorerContent() {
 
                 {state.nb ? (
                   <div className="board__group board__group--2">
-                    <h2 className="board__title  dark-white">Note</h2>
-                    <div className="board board--2">
+                    <h2 className="board__title  dark-white mb-8 font-bold text-3xl">
+                      Note
+                    </h2>
+                    <div className="relative bg-blue-primary text-white min-h-36 w-full rounded-md flex items-center justify-between pl-8 pr-4">
+                      <div className="absolute w-4 bg-[#033888] left-0 h-full rounded-l-md"></div>
                       <pre>
                         <Typist cursor={{ show: false }}>{state.nb}</Typist>
                       </pre>
@@ -209,7 +232,6 @@ function ExplorerContent() {
             </div>
           </div>
         </div>
-        
       </div>
     </div>
   );
