@@ -6,89 +6,90 @@ import { optionsFirst, optionsSecond, optionsThird } from "../data";
 import Typist from "react-typist";
 import { isMobile } from "react-device-detect";
 
-function ExplorerContent() {
-  let data = {
-    firstOption: null,
-    showSecond: false,
-    secondOption: null,
-    showThird: false,
-    thirdOption: null,
-    nb: "",
-    usage: "",
-    copied: false,
-  };
+let data = {
+  firstOption: null,
+  showSecond: false,
+  secondOption: null,
+  showThird: false,
+  thirdOption: null,
+  nb: "",
+  usage: "",
+  copied: false,
+};
 
+function ExplorerContent() {
   const [state, setStates] = useState(data);
-  
-  // useEffect((state) => {
-  //   setStates(state);
-  // },[state]);
 
   const onFirstChange = (selectedOption) => {
     if (state.secondOption) {
-      setStates({
+      data = {
         firstOption: selectedOption,
         showSecond: true,
         secondOption: null,
         showThird: false,
         nb: "",
         usage: "",
-      });
+      };
+      setStates(data);
     } else if (optionsSecond[selectedOption.value].length === 1) {
       data = { ...data, firstOption: selectedOption, showSecond: true };
       setStates(data);
       onSecondChange(optionsSecond[selectedOption.value][0]);
     } else {
-      setStates({
+      data = {
         ...data,
         firstOption: selectedOption,
         showSecond: true,
-      });
+      };
+      setStates(data);
     }
   };
 
   const onSecondChange = (selectedOption) => {
     if (selectedOption.usage) {
-      setStates({
+      data = {
         ...data,
         secondOption: selectedOption,
         showThird: false,
         nb: selectedOption.nb,
         usage: selectedOption.usage,
         thirdOption: null,
-      });
+      };
+      setStates(data);
+      // console.log(JSON.stringify(state) + "  drfergrer");
     } else if (optionsThird[selectedOption.value].length === 1) {
-      setStates({
+      data = {
         ...data,
         secondOption: selectedOption,
         showThird: true,
         thirdOption: null,
         nb: "",
         usage: "",
-      });
+      };
+      setStates(data);
       onThirdChange(optionsThird[selectedOption.value][0]);
       console.log(state.showThird);
     } else {
-        setStates({
-          ...data,
-          secondOption: selectedOption,
-          showThird: true,
-          thirdOption: null,
-          nb: "",
-          usage: "",
-        });        
-      console.log(JSON.stringify(state)) 
+      data = {
+        ...state,
+        secondOption: selectedOption,
+        showThird: true,
+        thirdOption: null,
+        nb: "",
+        usage: "",
+      };
+      setStates(data);
     }
-   
   };
 
   const onThirdChange = (selectedOption) => {
-    setStates({
+    data = {
       ...data,
       thirdOption: selectedOption,
       nb: selectedOption.nb,
       usage: selectedOption.usage,
-    });
+    };
+    setStates(data);
   };
 
   const onCopy = () => {
