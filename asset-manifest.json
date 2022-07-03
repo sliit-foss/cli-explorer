@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/cli-explorer/static/css/main.e7a49026.css",
-    "main.js": "/cli-explorer/static/js/main.b2585cef.js",
+    "main.css": "/cli-explorer/static/css/main.1935feba.css",
+    "main.js": "/cli-explorer/static/js/main.91ae57c3.js",
     "static/media/OpenSans-Bold.ttf": "/cli-explorer/static/media/OpenSans-Bold.fc10ccf11a61bac919b9.ttf",
     "static/media/OpenSans-ExtraBold.ttf": "/cli-explorer/static/media/OpenSans-ExtraBold.7a42b1f780edcefed802.ttf",
     "static/media/OpenSans-Light.ttf": "/cli-explorer/static/media/OpenSans-Light.ec993defe70da9dbbc3f.ttf",
@@ -9,11 +9,10 @@
     "static/media/OpenSans-Regular.ttf": "/cli-explorer/static/media/OpenSans-Regular.9ccd5e1b1dbea150336d.ttf",
     "index.html": "/cli-explorer/index.html",
     "static/media/clipboard.svg": "/cli-explorer/static/media/clipboard.57fae70f4ad883f77dd1256d1a15b53d.svg",
-    "static/media/github-green.svg": "/cli-explorer/static/media/github-green.7959b312e75e5fbeb669c30e81d1fb5a.svg",
     "static/media/github.svg": "/cli-explorer/static/media/github.3a4f66df2068ac5ba4ef5b97006852ca.svg"
   },
   "entrypoints": [
-    "static/css/main.e7a49026.css",
-    "static/js/main.b2585cef.js"
+    "static/css/main.1935feba.css",
+    "static/js/main.91ae57c3.js"
   ]
 }
