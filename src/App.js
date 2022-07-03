@@ -5,10 +5,12 @@ import ExplorerContent from "components/explorerContent";
 class App extends Component {
   render() {
     return (
-      <div className="flex bg-blue-bg">
+      <div className="bg-blue-bg h-screen">
         <SideNav />
-        <ExplorerContent />
-        <Footer />
+        <div className="flex flex-col justify-between h-full bg-blue-bg">
+          <ExplorerContent />
+          <Footer />
+        </div>
       </div>
     );
   }
