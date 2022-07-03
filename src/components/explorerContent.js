@@ -5,6 +5,7 @@ import clipboard from "assets/images/clipboard.svg";
 import { optionsFirst, optionsSecond, optionsThird } from "../data";
 import Typist from "react-typist";
 import { isMobile } from "react-device-detect";
+import { Footer } from "components/layout";
 
 let data = {
   firstOption: null,
@@ -129,24 +130,26 @@ function ExplorerContent() {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full ml-[6rem]">
       <Header />
-      <div className=" mx-[6rem] ">
-        <div>
-          <div className="w-full flex justify-between items-center">
-            <div className="w-5/12">
-              <h1 className="text-5xl mb-10">CLI EXPLORER</h1>
-              <p className="my-20 w-4/12">
+      <div>
+        <div className="">
+          <div className="w-full flex flex-col justify-between items-center">
+            <div className="w-full ml-5">
+              <h1 className="text-5xl ml-4 mt-7 mb-10 font-bold">
+                CLI EXPLORER
+              </h1>
+              <p className="ml-4 my-20 w-9/12 text-2xl">
                 Find the right commands you need without digging through the
                 web.
               </p>
 
               <div>
-                <h4 className="my-8">I want to:</h4>
+                <h4 className="ml-4 my-8">I want to:</h4>
 
                 <Select
                   placeholder="..."
-                  className="my-8 w-10/12"
+                  className="my-8 w-9/12 ml-4"
                   classNamePrefix="options-select"
                   isSearchable={true}
                   onChange={onFirstChange}
@@ -157,7 +160,7 @@ function ExplorerContent() {
                 {state.showSecond ? (
                   <Select
                     placeholder="..."
-                    className="my-8 w-10/12"
+                    className="my-8 ml-4 w-9/12"
                     classNamePrefix="options-select"
                     isSearchable={true}
                     onChange={onSecondChange}
@@ -169,7 +172,7 @@ function ExplorerContent() {
                 {state.showThird ? (
                   <Select
                     placeholder="..."
-                    className="my-8 w-10/12"
+                    className="my-8 w-9/12 ml-4 "
                     classNamePrefix="options-select"
                     isSearchable={true}
                     onChange={onThirdChange}
@@ -179,7 +182,7 @@ function ExplorerContent() {
                 ) : null}
               </div>
             </div>
-            <div className="w-7/12">
+            <div className="w-11/12 ml-0">
               <div
                 className={`board__group board__group--1 ${
                   isMobile && !state.usage ? " d-none" : ""
@@ -187,7 +190,7 @@ function ExplorerContent() {
               >
                 <h2 className="mb-8 font-bold text-3xl">Usage</h2>
 
-                <div className="relative bg-blue-primary text-white min-h-36 w-full rounded-md flex items-center justify-between pl-8 pr-8 mb-8">
+                <div className="relative bg-blue-primary text-white min-h-36 w-10/12 rounded-md flex items-center justify-between pl-8 pr-8 mb-8">
                   <div className="absolute w-4 bg-[#033888] left-0 h-full rounded-l-md"></div>
                   <pre>
                     {state.usage.length ? (
@@ -220,7 +223,7 @@ function ExplorerContent() {
                     <h2 className="board__title  dark-white mb-8 font-bold text-3xl">
                       Note
                     </h2>
-                    <div className="relative bg-blue-primary text-white min-h-36 w-full rounded-md flex items-center justify-between pl-8 pr-4">
+                    <div className="relative bg-blue-primary text-white min-h-36 w-10/12 rounded-md flex items-center justify-between pl-8 pr-4 mb-24">
                       <div className="absolute w-4 bg-[#033888] left-0 h-full rounded-l-md"></div>
                       <pre>
                         <Typist cursor={{ show: false }}>{state.nb}</Typist>
