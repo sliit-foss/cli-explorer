@@ -130,22 +130,22 @@ function ExplorerContent() {
   };
 
   return (
-    <div className="w-full ml-[6rem]">
+    <div className="w-full ml-[6rem] sm:pl-11">
       <Header />
       <div>
         <div className="">
           <div className="w-full flex flex-col justify-between items-center">
-            <div className="w-full ml-5">
-              <h1 className="text-5xl ml-4 mt-7 mb-10 font-bold">
+            <div className="w-full ml-8">
+              <h1 className="text-5xl sm:text-6xl ml-4 mt-7 mb-10 font-bold">
                 CLI EXPLORER
               </h1>
-              <p className="ml-4 my-20 w-9/12 text-2xl">
+              <p className="ml-4 my-20 w-9/12 text-2xl sm:text-3xl">
                 Find the right commands you need without digging through the
                 web.
               </p>
 
               <div>
-                <h4 className="ml-4 my-8">I want to:</h4>
+                <h4 className="ml-4 my- sm:text-2xl">I want to:</h4>
 
                 <Select
                   placeholder="..."
@@ -182,11 +182,11 @@ function ExplorerContent() {
                 ) : null}
               </div>
             </div>
-            <div className="w-11/12 ml-0">
+            <div className="w-full ml-0">
               <div
                 className={`board__group board__group--1 ${
                   isMobile && !state.usage ? " d-none" : ""
-                }`}
+                } pl-8 pr-8`}
               >
                 <h2 className="mb-8 font-bold text-3xl">Usage</h2>
 
