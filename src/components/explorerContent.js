@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import { Header } from "components/layout";
 import clipboard from "assets/images/clipboard.svg";
-import { optionsFirst, optionsSecond, optionsThird } from "../data";
 import Typist from "react-typist";
 import { isMobile } from "react-device-detect";
 import { Footer } from "components/layout";
@@ -18,9 +17,13 @@ let data = {
   copied: false,
 };
 
-function ExplorerContent() {
+const ExplorerContent = ({ selectedItem }) => {
   const [state, setStates] = useState(data);
-
+  const {
+    optionsFirst,
+    optionsSecond,
+    optionsThird,
+  } = require(`../data/${selectedItem.toLowerCase()}/index.js`);
   const onFirstChange = (selectedOption) => {
     if (state.secondOption) {
       data = {
@@ -238,6 +241,6 @@ function ExplorerContent() {
       </div>
     </div>
   );
-}
+};
 
 export default ExplorerContent;
