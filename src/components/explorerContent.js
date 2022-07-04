@@ -134,7 +134,7 @@ function ExplorerContent() {
       <Header />
       <div>
         <div className="">
-          <div className="w-full flex flex-col justify-between items-center">
+          <div className="w-full flex flex-col lg:flex-row justify-between items-center">
             <div className="w-full ml-8">
               <h1 className="text-5xl sm:text-6xl ml-4 mt-7 mb-10 font-bold">
                 CLI EXPLORER

@@ -36,7 +36,7 @@ function SideNav() {
 
   return (
     <div className="">
-      <div className="fixed group z-40 flex flex-col h-screen w-[6rem] md:hover:w-[14rem] bg-blue-primary shadow-right px-2  ease-in-out duration-300 ">
+      <div className="fixed group z-40 flex flex-col h-screen w-[6rem] lg:hover:w-[14rem] bg-blue-primary shadow-right px-2  ease-in-out duration-300 ">
         <div className="flex flex-col mt-3.5">
           <FaTerminal className="w-12 h-12 text-white ml-[0.9rem] mb-12 mt-5" />
           {navItems.map((Item, index) => {
@@ -55,7 +55,7 @@ function SideNav() {
                       {console.log(Item.name)}
                     </div>
                     <span
-                      className={`hidden md:flex cursor-pointer opacity-0 hover:text-blue-light pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto items-center pl-5 text-2xl text-white transition ease-in duration-300 `}
+                      className={`hidden lg:flex cursor-pointer opacity-0 hover:text-blue-light pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto items-center pl-5 text-2xl text-white transition ease-in duration-300 `}
                     >
                       {Item.desc}
                     </span>
