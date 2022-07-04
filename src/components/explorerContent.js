@@ -133,22 +133,22 @@ const ExplorerContent = ({ selectedItem }) => {
   };
 
   return (
-    <div className="w-full ml-[6rem] sm:pl-11">
+    <div className="w-full ml-[6rem] sm:pl-11 xl:mt-[20rem] mt-[7rem] lg:mt-[20rem]">
       <Header />
       <div>
         <div className="">
           <div className="w-full flex flex-col lg:flex-row justify-between items-center">
             <div className="w-full ml-8">
-              <h1 className="text-5xl sm:text-6xl ml-4 mt-7 mb-10 font-bold">
+              <h1 className="text-5xl sm:text-6xl xl:text-7xl ml-4 mt-7 mb-10 font-bold">
                 CLI EXPLORER
               </h1>
-              <p className="ml-4 my-20 w-9/12 text-2xl sm:text-3xl">
+              <p className="ml-4 my-20 w-9/12 text-2xl sm:text-3xl xl:text-4xl">
                 Find the right commands you need without digging through the
                 web.
               </p>
 
               <div>
-                <h4 className="ml-4 my- sm:text-2xl">I want to:</h4>
+                <h4 className="ml-4 my- sm:text-2xl xl:text-3xl">I want to:</h4>
 
                 <Select
                   placeholder="..."
@@ -185,16 +185,16 @@ const ExplorerContent = ({ selectedItem }) => {
                 ) : null}
               </div>
             </div>
-            <div className="w-full ml-0">
+            <div className="w-full ml-0 lg:mt-20">
               <div
                 className={`board__group board__group--1 ${
                   isMobile && !state.usage ? " d-none" : ""
                 } pl-8 pr-8`}
               >
-                <h2 className="mb-8 font-bold text-3xl">Usage</h2>
+                <h2 className="mb-8 font-bold text-3xl lg:text-4xl">Usage</h2>
 
-                <div className="relative bg-blue-primary text-white min-h-36 w-10/12 rounded-md flex items-center justify-between pl-8 pr-8 mb-8">
-                  <div className="absolute w-4 bg-[#033888] left-0 h-full rounded-l-md"></div>
+                <div className="relative bg-blue-primary text-white min-h-36 lg:h-40 w-11/12 rounded-md flex items-center justify-between pl-8 pr-8 mb-8">
+                  <div className="absolute w-4 bg-red-700 left-0 h-full rounded-l-md"></div>
                   <pre>
                     {state.usage.length ? (
                       <Typist cursor={{ show: false }}>{state.usage}</Typist>
@@ -223,10 +223,10 @@ const ExplorerContent = ({ selectedItem }) => {
 
                 {state.nb ? (
                   <div className="board__group board__group--2">
-                    <h2 className="board__title  dark-white mb-8 font-bold text-3xl">
+                    <h2 className="board__title  dark-white mb-8 font-bold text-3xl lg:text-4xl">
                       Note
                     </h2>
-                    <div className="relative bg-blue-primary text-white min-h-36 w-10/12 rounded-md flex items-center justify-between pl-8 pr-4 mb-24">
+                    <div className="relative bg-blue-primary text-white min-h-36 lg:h-40 w-11/12 rounded-md flex items-center justify-between pl-8 pr-4 mb-24">
                       <div className="absolute w-4 bg-[#033888] left-0 h-full rounded-l-md"></div>
                       <pre>
                         <Typist cursor={{ show: false }}>{state.nb}</Typist>
