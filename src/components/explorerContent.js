@@ -133,12 +133,12 @@ const ExplorerContent = ({ selectedItem }) => {
   };
 
   return (
-    <div className="w-full ml-[6rem] sm:pl-11 xl:mt-[20rem] mt-[7rem] lg:mt-[20rem]">
+    <div className="w-full ml-[6rem] sm:pl-11 xl:mt-[20rem] mt-[7rem] lg:mt-[15rem] ">
       <Header />
       <div>
         <div className="">
           <div className="w-full flex flex-col lg:flex-row justify-between items-center">
-            <div className="w-full ml-8">
+            <div className="lg:w-9/12 ml-8 lg:pl-16">
               <h1 className="text-5xl sm:text-6xl xl:text-7xl ml-4 mt-7 mb-10 font-bold">
                 CLI EXPLORER
               </h1>
@@ -185,7 +185,7 @@ const ExplorerContent = ({ selectedItem }) => {
                 ) : null}
               </div>
             </div>
-            <div className="w-full ml-0 lg:mt-20">
+            <div className="w-full ml-0 lg:mt-20 lg:mr-4">
               <div
                 className={`board__group board__group--1 ${
                   isMobile && !state.usage ? " d-none" : ""
@@ -226,7 +226,7 @@ const ExplorerContent = ({ selectedItem }) => {
                     <h2 className="board__title  dark-white mb-8 font-bold text-3xl lg:text-4xl">
                       Note
                     </h2>
-                    <div className="relative bg-blue-primary text-white min-h-36 lg:h-40 w-11/12 rounded-md flex items-center justify-between pl-8 pr-4 mb-24">
+                    <div className="relative bg-blue-primary text-white min-h-36 lg:max-h-80 w-11/12 rounded-md flex items-center justify-between pl-8 pr-4 mb-24">
                       <div className="absolute w-4 bg-[#033888] left-0 h-full rounded-l-md"></div>
                       <pre>
                         <Typist cursor={{ show: false }}>{state.nb}</Typist>
