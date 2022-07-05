@@ -36,7 +36,7 @@ function SideNav({ setContent }) {
 
   return (
     <div className="">
-      <div className="fixed group z-40 flex flex-col h-screen w-[6rem] lg:hover:w-[14rem] bg-blue-primary shadow-right px-2  ease-in-out duration-300 ">
+      <div className="fixed group z-40 flex flex-col h-screen w-[6rem] lg:hover:w-[14rem] bg-blue-primary dark:bg-black shadow-right px-2  ease-in-out duration-300 ">
         <div className="flex flex-col mt-3.5">
           <FaTerminal className="w-12 h-12 text-white ml-[0.9rem] mb-12 mt-5" />
           {navItems.map((Item, index) => {
