@@ -51,6 +51,7 @@ const ExplorerContent = ({ selectedItem }) => {
 
   const onSecondChange = (selectedOption) => {
     if (selectedOption.usage) {
+      console.log("second change");
       data = {
         ...data,
         secondOption: selectedOption,
