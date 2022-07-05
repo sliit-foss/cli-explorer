@@ -1,28 +1,15 @@
-import React from "react";
-import Toggle from "./toggle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const Nav = () => {
-  const [darkMode, setDarkMode] = useState(
-    localStorage.getItem("dark") == "true"
-  );
+export default function useDarkMode(){
+    const [theme , setTheme] = useState(localStorage.theme)
+    const colorTheme = theme === "dark" ? "light" : "dark";
+    useEffect(() =>{
+        const root = window.document.documentElement;
 
-  const handleToggle = () => {
-    setDarkMode(!darkMode);
+        root.classList.remove(colorTheme);
+        root.classList.add(theme);
+        localStorage.setItem("theme", theme);
+    },[theme,colorTheme])
 
-    localStorage.setItem("dark", darkMode.toString());
-  };
-  return (
-    <nav className="nav">
-      <Toggle
-        checked={darkMode}
-        leftLabel="Light Mode"
-        name="dark"
-        onChange={handleToggle}
-        rightLabel="Dark Mode"
-      />
-    </nav>
-  );
-};
-
-export default Nav;
+    return [colorTheme,setTheme];
+}

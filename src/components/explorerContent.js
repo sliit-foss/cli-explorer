@@ -132,6 +132,25 @@ const ExplorerContent = ({ selectedItem }) => {
     // }
   };
 
+
+  const styles = {
+
+    option: (provided, state) => ({
+      ...provided,
+      fontWeight: state.isSelected ? "bold" : "normal",
+      color: "black",
+      backgroundColor: state.data.color,
+      fontSize: state.selectProps.myFontSize
+    }),
+    singleValue: (provided, state) => ({
+      ...provided,
+      color: state.data.color,
+      fontSize: state.selectProps.myFontSize
+    })
+  };
+
+
+
   return (
     <div className="w-full ml-[6rem] sm:pl-11 xl:mt-[20rem] mt-[7rem] lg:mt-[15rem] ">
       <Header />
@@ -139,16 +158,16 @@ const ExplorerContent = ({ selectedItem }) => {
         <div className="">
           <div className="w-full flex flex-col lg:flex-row justify-between items-center">
             <div className="lg:w-9/12 ml-8 lg:pl-16">
-              <h1 className="text-5xl sm:text-6xl xl:text-7xl ml-4 mt-7 mb-10 font-bold">
+              <h1 className="text-5xl sm:text-6xl xl:text-7xl ml-4 mt-7 mb-10 font-bold dark:text-[#EAFBFF]">
                 CLI EXPLORER
               </h1>
-              <p className="ml-4 my-20 w-9/12 text-2xl sm:text-3xl xl:text-4xl">
+              <p className="ml-4 my-20 w-9/12 text-2xl sm:text-3xl xl:text-4xl dark:text-[#EAFBFF]">
                 Find the right commands you need without digging through the
                 web.
               </p>
 
               <div>
-                <h4 className="ml-4 my- sm:text-2xl xl:text-3xl">I want to:</h4>
+                <h4 className="ml-4 my- sm:text-2xl xl:text-3xl dark:text-[#EAFBFF]">I want to:</h4>
 
                 <Select
                   placeholder="..."
@@ -158,6 +177,7 @@ const ExplorerContent = ({ selectedItem }) => {
                   onChange={onFirstChange}
                   value={state.firstOption}
                   options={optionsFirst}
+                  styles={styles}
                 />
 
                 {state.showSecond ? (
@@ -169,6 +189,7 @@ const ExplorerContent = ({ selectedItem }) => {
                     onChange={onSecondChange}
                     value={state.secondOption}
                     options={optionsSecond[state.firstOption.value]}
+                    styles={styles}
                   />
                 ) : null}
 
@@ -181,6 +202,7 @@ const ExplorerContent = ({ selectedItem }) => {
                     onChange={onThirdChange}
                     value={state.thirdOption}
                     options={optionsThird[state.secondOption.value]}
+                    styles={styles}
                   />
                 ) : null}
               </div>
@@ -191,9 +213,9 @@ const ExplorerContent = ({ selectedItem }) => {
                   isMobile && !state.usage ? " d-none" : ""
                 } pl-8 pr-8`}
               >
-                <h2 className="mb-8 font-bold text-3xl lg:text-4xl">Usage</h2>
+                <h2 className="mb-8 font-bold text-3xl lg:text-4xl dark:text-[#EAFBFF]">Usage</h2>
 
-                <div className="relative bg-blue-primary text-white min-h-36 lg:h-40 w-11/12 rounded-md flex items-center justify-between pl-8 pr-8 mb-8">
+                <div className="relative bg-blue-primary text-white dark:bg-[#9bb0b54f] min-h-36 lg:h-40 w-11/12 rounded-md flex items-center justify-between pl-8 pr-8 mb-8">
                   <div className="absolute w-4 bg-red-700 left-0 h-full rounded-l-md"></div>
                   <pre>
                     {state.usage.length ? (
@@ -223,10 +245,10 @@ const ExplorerContent = ({ selectedItem }) => {
 
                 {state.nb ? (
                   <div className="board__group board__group--2">
-                    <h2 className="board__title  dark-white mb-8 font-bold text-3xl lg:text-4xl">
+                    <h2 className="board__title  dark-white mb-8 font-bold text-3xl lg:text-4xl dark:text-[#EAFBFF]">
                       Note
                     </h2>
-                    <div className="relative bg-blue-primary text-white min-h-36 lg:max-h-80 w-11/12 rounded-md flex items-center justify-between pl-8 pr-4 mb-24">
+                    <div className="relative bg-blue-primary text-white dark:bg-[#9bb0b54f] min-h-36 lg:max-h-80 w-11/12 rounded-md flex items-center justify-between pl-8 pr-4 mb-24">
                       <div className="absolute w-4 bg-[#033888] left-0 h-full rounded-l-md"></div>
                       <pre>
                         <Typist cursor={{ show: false }}>{state.nb}</Typist>
