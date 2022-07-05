@@ -203,7 +203,7 @@ const ExplorerContent = ({ selectedItem }) => {
                 ) : null}
               </div>
             </div>
-            <div className="w-full ml-0 lg:mt-20 lg:mr-4 xl:mr-[3rem]" key={data.usage}>
+            <div className="w-full ml-0 lg:mt-20 lg:mr-4 xl:mr-[3rem] xl:mb-28" key={data.usage}>
               <div
                 className={`board__group board__group--1 ${isMobile && !data.usage ? " d-none" : ""
                   } pl-8 pr-8`}
