@@ -152,7 +152,7 @@ const ExplorerContent = ({ selectedItem }) => {
 
 
   return (
-    <div className="w-full ml-[6rem] sm:pl-11 xl:mt-[20rem] mt-[7rem] lg:mt-[15rem] ">
+    <div className="w-full ml-[6rem] sm:pl-11 xl:mt-[18rem] mt-[7rem] lg:mt-[15rem]">
       <Header />
       <div>
         <div className="">
