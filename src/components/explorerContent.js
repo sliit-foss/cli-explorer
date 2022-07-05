@@ -1,104 +1,96 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Select from "react-select";
 import { Header } from "components/layout";
 import clipboard from "assets/images/clipboard.svg";
 import Typist from "react-typist";
 import { isMobile } from "react-device-detect";
-import { Footer } from "components/layout";
-
-let data = {
-  firstOption: null,
-  showSecond: false,
-  secondOption: null,
-  showThird: false,
-  thirdOption: null,
-  nb: "",
-  usage: "",
-  copied: false,
-};
 
 const ExplorerContent = ({ selectedItem }) => {
-  const [state, setStates] = useState(data);
+
+  const [data, setData] = useState({
+    firstOption: null,
+    showSecond: false,
+    secondOption: null,
+    showThird: false,
+    thirdOption: null,
+    nb: "",
+    usage: "",
+    copied: false,
+  });
+
   const {
     optionsFirst,
     optionsSecond,
     optionsThird,
   } = require(`../data/${selectedItem.toLowerCase()}/index.js`);
+
   const onFirstChange = (selectedOption) => {
-    if (state.secondOption) {
-      data = {
+    if (data.secondOption) {
+      setData({
+        ...data,
         firstOption: selectedOption,
         showSecond: true,
         secondOption: null,
         showThird: false,
         nb: "",
         usage: "",
-      };
-      setStates(data);
+      });
     } else if (optionsSecond[selectedOption.value].length === 1) {
-      data = { ...data, firstOption: selectedOption, showSecond: true };
-      setStates(data);
+      setData({ ...data, firstOption: selectedOption, showSecond: true });
       onSecondChange(optionsSecond[selectedOption.value][0]);
     } else {
-      data = {
+      setData({
         ...data,
         firstOption: selectedOption,
         showSecond: true,
-      };
-      setStates(data);
+      });
     }
   };
 
   const onSecondChange = (selectedOption) => {
+    setData({ ...data, nb: null, usage: null });
     if (selectedOption.usage) {
-      console.log("second change");
-      data = {
+      setData({
         ...data,
         secondOption: selectedOption,
         showThird: false,
         nb: selectedOption.nb,
         usage: selectedOption.usage,
         thirdOption: null,
-      };
-      setStates(data);
-      // console.log(JSON.stringify(state) + "  drfergrer");
+      })
     } else if (optionsThird[selectedOption.value].length === 1) {
-      data = {
+      setData({
         ...data,
         secondOption: selectedOption,
         showThird: true,
         thirdOption: null,
         nb: "",
         usage: "",
-      };
-      setStates(data);
+      });
       onThirdChange(optionsThird[selectedOption.value][0]);
-      console.log(state.showThird);
     } else {
-      data = {
-        ...state,
+      setData({
+        ...data,
         secondOption: selectedOption,
         showThird: true,
         thirdOption: null,
         nb: "",
         usage: "",
-      };
-      setStates(data);
+      });
     }
   };
 
   const onThirdChange = (selectedOption) => {
-    data = {
+    setData({
       ...data,
       thirdOption: selectedOption,
       nb: selectedOption.nb,
       usage: selectedOption.usage,
-    };
-    setStates(data);
+    });
   };
 
   const onCopy = () => {
-    // setStates({
+    // setData({
     //   ...data,
     //   copied: true
     // });
@@ -106,7 +98,7 @@ const ExplorerContent = ({ selectedItem }) => {
     //     clearInterval(timeout);
     // }
     // timeout = setTimeout(() => {
-    //   setStates({
+    //   setData({
     //     ...data,
     //     copied: false
     //   });
@@ -115,7 +107,7 @@ const ExplorerContent = ({ selectedItem }) => {
 
   const copyUsage = () => {
     // const el = document.createElement('textarea');
-    // el.value = state.usage;
+    // el.value = data.usage;
     // el.setAttribute('readonly', '');
     // el.style.position = 'absolute';
     // el.style.left = '-9999px';
@@ -162,6 +154,9 @@ const ExplorerContent = ({ selectedItem }) => {
               <h1 className="text-5xl sm:text-6xl xl:text-7xl ml-4 mt-7 mb-10 font-bold dark:text-[#EAFBFF]">
                 CLI EXPLORER
               </h1>
+              <h1 className="text-5xl sm:text-6xl xl:text-7xl ml-4 mt-10 mb-10 font-bold dark:text-[#EAFBFF]">
+                {selectedItem.toUpperCase()}
+              </h1>
               <p className="ml-4 my-20 w-9/12 text-2xl sm:text-3xl xl:text-4xl dark:text-[#EAFBFF]">
                 Find the right commands you need without digging through the
                 web.
@@ -176,61 +171,59 @@ const ExplorerContent = ({ selectedItem }) => {
                   classNamePrefix="options-select"
                   isSearchable={true}
                   onChange={onFirstChange}
-                  value={state.firstOption}
+                  value={data.firstOption}
                   options={optionsFirst}
                   styles={styles}
                 />
 
-                {state.showSecond ? (
+                {data.showSecond ? (
                   <Select
                     placeholder="..."
                     className="my-8 ml-4 w-9/12"
                     classNamePrefix="options-select"
                     isSearchable={true}
                     onChange={onSecondChange}
-                    value={state.secondOption}
-                    options={optionsSecond[state.firstOption.value]}
+                    value={data.secondOption}
+                    options={optionsSecond[data.firstOption.value]}
                     styles={styles}
                   />
                 ) : null}
 
-                {state.showThird ? (
+                {data.showThird ? (
                   <Select
                     placeholder="..."
                     className="my-8 w-9/12 ml-4 "
                     classNamePrefix="options-select"
                     isSearchable={true}
                     onChange={onThirdChange}
-                    value={state.thirdOption}
-                    options={optionsThird[state.secondOption.value]}
+                    value={data.thirdOption}
+                    options={optionsThird[data.secondOption.value]}
                     styles={styles}
                   />
                 ) : null}
               </div>
             </div>
-            <div className="w-full ml-0 lg:mt-20 lg:mr-4">
+            <div className="w-full ml-0 lg:mt-20 lg:mr-4" key={data.usage}>
               <div
-                className={`board__group board__group--1 ${
-                  isMobile && !state.usage ? " d-none" : ""
-                } pl-8 pr-8`}
+                className={`board__group board__group--1 ${isMobile && !data.usage ? " d-none" : ""
+                  } pl-8 pr-8`}
               >
                 <h2 className="mb-8 font-bold text-3xl lg:text-4xl dark:text-[#EAFBFF]">Usage</h2>
 
                 <div className="relative bg-blue-primary text-white dark:bg-[#9bb0b54f] min-h-36 lg:h-40 w-11/12 rounded-md flex items-center justify-between pl-8 pr-8 mb-8">
                   <div className="absolute w-4 bg-red-700 left-0 h-full rounded-l-md"></div>
                   <pre>
-                    {state.usage.length ? (
-                      <Typist cursor={{ show: false }}>{state.usage}</Typist>
+                    {data.usage.length ? (
+                      <Typist cursor={{ show: false }}>{data.usage}</Typist>
                     ) : (
                       <div />
                     )}
                   </pre>
-                  {state.usage.length ? (
+                  {data.usage.length ? (
                     <div className="copy">
                       <span
-                        className={`copy__popover ${
-                          state.copied ? "show" : ""
-                        }`}
+                        className={`copy__popover ${data.copied ? "show" : ""
+                          }`}
                       >
                         command copied
                       </span>
@@ -244,15 +237,15 @@ const ExplorerContent = ({ selectedItem }) => {
                   ) : null}
                 </div>
 
-                {state.nb ? (
-                  <div className="board__group board__group--2">
+                {data.nb ? (
+                  <div className="board__group board__group--2" key={data.nb}>
                     <h2 className="board__title  dark-white mb-8 font-bold text-3xl lg:text-4xl dark:text-[#EAFBFF]">
                       Note
                     </h2>
                     <div className="relative bg-blue-primary text-white dark:bg-[#9bb0b54f] min-h-36 lg:max-h-80 w-11/12 rounded-md flex items-center justify-between pl-8 pr-4 mb-24">
                       <div className="absolute w-4 bg-[#033888] left-0 h-full rounded-l-md"></div>
                       <pre>
-                        <Typist cursor={{ show: false }}>{state.nb}</Typist>
+                        <Typist cursor={{ show: false }}>{data.nb}</Typist>
                       </pre>
                     </div>
                   </div>
