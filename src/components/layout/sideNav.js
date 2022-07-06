@@ -43,7 +43,7 @@ function SideNav({ setContent }) {
             return (
               <div key={index} className="flex flex-col">
                 <div className="flex flex-row justify-start items-center">
-                  <div className="my-3 ml-[0.8rem]">
+                  <div className="my-3 ml-[0.8rem] xl:my-6">
                     <Item.icon
                       onClick={() => {
                         setContent(Item.desc);
