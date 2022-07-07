@@ -142,7 +142,7 @@ const ExplorerContent = ({ selectedItem }) => {
     })
   };
 
-
+ 
 
   return (
     <div className="w-full ml-[6rem] sm:pl-11 xl:mt-[18rem] mt-[7rem] lg:mt-[15rem]">
@@ -151,23 +151,23 @@ const ExplorerContent = ({ selectedItem }) => {
         <div className="">
           <div className="w-full flex flex-col lg:flex-row justify-between items-center">
             <div className="lg:w-9/12 ml-8 lg:pl-16">
-              <h1 className="text-5xl sm:text-6xl xl:text-7xl ml-4 mt-7 mb-10 font-bold dark:text-[#EAFBFF]">
+              <h1 className="font-Montserrat text-5xl sm:text-6xl xl:text-7xl ml-4 mt-7 mb-10 font-bold dark:text-[#EAFBFF]">
                 CLI EXPLORER
               </h1>
-              <h1 className="text-5xl sm:text-6xl xl:text-7xl ml-4 mt-10 mb-10 font-bold dark:text-[#EAFBFF]">
+              <h1 className="font-Montserrat text-5xl sm:text-6xl xl:text-7xl ml-4 mt-10 mb-10 font-bold dark:text-[#EAFBFF]">
                 {selectedItem.toUpperCase()}
               </h1>
-              <p className="ml-4 my-20 w-9/12 text-2xl sm:text-3xl xl:text-4xl dark:text-[#EAFBFF]">
+              <p className="font-Montserrat ml-4 my-20 w-9/12 text-2xl sm:text-3xl xl:text-4xl dark:text-[#EAFBFF]">
                 Find the right commands you need without digging through the
                 web.
               </p>
 
               <div>
-                <h4 className="ml-4 my- sm:text-2xl xl:text-3xl dark:text-[#EAFBFF]">I want to:</h4>
+                <h4 className="font-Montserrat ml-4 my- sm:text-2xl xl:text-3xl dark:text-[#EAFBFF]">I want to:</h4>
 
                 <Select
                   placeholder="..."
-                  className="my-8 w-9/12 ml-4"
+                  className="my-8 w-9/12 ml-4 font-Montserrat"
                   classNamePrefix="options-select"
                   isSearchable={true}
                   onChange={onFirstChange}
@@ -179,7 +179,7 @@ const ExplorerContent = ({ selectedItem }) => {
                 {data.showSecond ? (
                   <Select
                     placeholder="..."
-                    className="my-8 ml-4 w-9/12"
+                    className="my-8 ml-4 w-9/12 font-Montserrat"
                     classNamePrefix="options-select"
                     isSearchable={true}
                     onChange={onSecondChange}
@@ -192,7 +192,7 @@ const ExplorerContent = ({ selectedItem }) => {
                 {data.showThird ? (
                   <Select
                     placeholder="..."
-                    className="my-8 w-9/12 ml-4 "
+                    className="my-8 w-9/12 ml-4 font-Montserrat"
                     classNamePrefix="options-select"
                     isSearchable={true}
                     onChange={onThirdChange}
@@ -208,7 +208,7 @@ const ExplorerContent = ({ selectedItem }) => {
                 className={`board__group board__group--1 ${isMobile && !data.usage ? " d-none" : ""
                   } pl-8 pr-8`}
               >
-                <h2 className="mb-8 font-bold text-3xl lg:text-4xl dark:text-[#EAFBFF]">Usage</h2>
+                <h2 className="font-Montserrat mb-8 font-bold text-3xl lg:text-4xl dark:text-[#EAFBFF]">Usage</h2>
 
                 <div className="relative bg-blue-primary text-white dark:bg-[#9bb0b54f] min-h-36 lg:h-40 w-11/12 rounded-md flex items-center justify-between pl-8 pr-8 mb-8">
                   <div className="absolute w-4 bg-red-700 left-0 h-full rounded-l-md"></div>
@@ -239,12 +239,12 @@ const ExplorerContent = ({ selectedItem }) => {
 
                 {data.nb ? (
                   <div className="board__group board__group--2" key={data.nb}>
-                    <h2 className="board__title  dark-white mb-8 font-bold text-3xl lg:text-4xl dark:text-[#EAFBFF]">
+                    <h2 className="font-Montserrat board__title  dark-white mb-8 font-bold text-3xl lg:text-4xl dark:text-[#EAFBFF]">
                       Note
                     </h2>
                     <div className="relative bg-blue-primary text-white dark:bg-[#9bb0b54f] min-h-36 lg:max-h-80 w-11/12 rounded-md flex items-center justify-between pl-8 pr-4 mb-24">
-                      <div className="absolute w-4 bg-[#033888] left-0 h-full rounded-l-md"></div>
-                      <pre>
+                      <div className="absolute w-4 left-0 h-full rounded-l-md"></div>
+                      <pre className="font-Montserrat">
                         <Typist cursor={{ show: false }}>{data.nb}</Typist>
                       </pre>
                     </div>
