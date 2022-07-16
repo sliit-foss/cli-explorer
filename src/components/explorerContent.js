@@ -174,6 +174,7 @@ const ExplorerContent = ({ selectedItem }) => {
                   value={data.firstOption}
                   options={optionsFirst}
                   styles={styles}
+                  menuPlacement="auto"
                 />
 
                 {data.showSecond ? (
@@ -186,6 +187,7 @@ const ExplorerContent = ({ selectedItem }) => {
                     value={data.secondOption}
                     options={optionsSecond[data.firstOption.value]}
                     styles={styles}
+                    menuPlacement="auto"
                   />
                 ) : null}
 
@@ -199,6 +201,7 @@ const ExplorerContent = ({ selectedItem }) => {
                     value={data.thirdOption}
                     options={optionsThird[data.secondOption.value]}
                     styles={styles}
+                    menuPlacement="auto"
                   />
                 ) : null}
               </div>
