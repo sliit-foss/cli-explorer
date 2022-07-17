@@ -6,7 +6,6 @@ import Typist from "react-typist";
 import { isMobile } from "react-device-detect";
 
 const ExplorerContent = ({ selectedItem }) => {
-
   const [data, setData] = useState({
     firstOption: null,
     showSecond: false,
@@ -57,7 +56,7 @@ const ExplorerContent = ({ selectedItem }) => {
         nb: selectedOption.nb,
         usage: selectedOption.usage,
         thirdOption: null,
-      })
+      });
     } else if (optionsThird[selectedOption.value].length === 1) {
       setData({
         ...data,
@@ -90,19 +89,20 @@ const ExplorerContent = ({ selectedItem }) => {
   };
 
   const onCopy = () => {
-    // setData({
-    //   ...data,
-    //   copied: true
-    // });
+    navigator.clipboard.writeText(data.usage);
+    setData({
+      ...data,
+      copied: true,
+    });
+    const timeout = setTimeout(() => {
+      setData({
+        ...data,
+        copied: false,
+      });
+    }, 1000);
     // if (timeout) {
-    //     clearInterval(timeout);
+    //   clearInterval(timeout);
     // }
-    // timeout = setTimeout(() => {
-    //   setData({
-    //     ...data,
-    //     copied: false
-    //   });
-    // }, 1000);
   };
 
   const copyUsage = () => {
@@ -125,24 +125,20 @@ const ExplorerContent = ({ selectedItem }) => {
     // }
   };
 
-
   const styles = {
-
     option: (provided, state) => ({
       ...provided,
       fontWeight: state.isSelected ? "bold" : "normal",
       color: "black",
       backgroundColor: state.data.color,
-      fontSize: state.selectProps.myFontSize
+      fontSize: state.selectProps.myFontSize,
     }),
     singleValue: (provided, state) => ({
       ...provided,
       color: state.data.color,
-      fontSize: state.selectProps.myFontSize
-    })
+      fontSize: state.selectProps.myFontSize,
+    }),
   };
-
- 
 
   return (
     <div className="w-full ml-[6rem] sm:pl-11 xl:mt-[18rem] mt-[7rem] lg:mt-[15rem]">
@@ -163,7 +159,9 @@ const ExplorerContent = ({ selectedItem }) => {
               </p>
 
               <div>
-                <h4 className="font-Montserrat ml-4 my- sm:text-2xl xl:text-3xl dark:text-[#EAFBFF]">I want to:</h4>
+                <h4 className="font-Montserrat ml-4 my- sm:text-2xl xl:text-3xl dark:text-[#EAFBFF]">
+                  I want to:
+                </h4>
 
                 <Select
                   placeholder="..."
@@ -206,12 +204,18 @@ const ExplorerContent = ({ selectedItem }) => {
                 ) : null}
               </div>
             </div>
-            <div className="w-full ml-0 lg:mt-20 lg:mr-4 xl:mr-[3rem] xl:mb-28" key={data.usage}>
+            <div
+              className="w-full ml-0 lg:mt-20 lg:mr-4 xl:mr-[3rem] xl:mb-28"
+              key={data.usage}
+            >
               <div
-                className={`board__group board__group--1 ${isMobile && !data.usage ? " d-none" : ""
-                  } pl-8 pr-8`}
+                className={`board__group board__group--1 ${
+                  isMobile && !data.usage ? " d-none" : ""
+                } pl-8 pr-8`}
               >
-                <h2 className="font-Montserrat mb-8 font-bold text-3xl lg:text-4xl dark:text-[#EAFBFF]">Usage</h2>
+                <h2 className="font-Montserrat mb-8 font-bold text-3xl lg:text-4xl dark:text-[#EAFBFF]">
+                  Usage
+                </h2>
 
                 <div className="relative bg-blue-primary text-white dark:bg-[#9bb0b54f] min-h-36 lg:h-40 w-11/12 rounded-md flex items-center justify-between pl-8 pr-8 mb-8">
                   <div className="absolute w-4 bg-red-700 left-0 h-full rounded-l-md"></div>
@@ -225,14 +229,13 @@ const ExplorerContent = ({ selectedItem }) => {
                   {data.usage.length ? (
                     <div className="copy">
                       <span
-                        className={`copy__popover ${data.copied ? "show" : ""
-                          }`}
+                        className={`copy__popover ${data.copied ? "show" : ""}`}
                       >
                         command copied
                       </span>
                       <img
                         className="copy__image"
-                        onClick={copyUsage}
+                        onClick={onCopy}
                         src={clipboard}
                         alt="Clipboard"
                       />
