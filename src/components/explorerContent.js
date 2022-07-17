@@ -100,7 +100,6 @@ const ExplorerContent = ({ selectedItem }) => {
         copied: false,
       });
     }, 1000);
-    console.log(data.copied);
   };
 
   const styles = {
