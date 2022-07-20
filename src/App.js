@@ -8,7 +8,7 @@ const App = () =>  {
     return (
       <div className="bg-blue-bg min-h-screen">
         <SideNav setContent = {setSelectedItem}/>
-        <div className="flex flex-col justify-between h-screen bg-blue-bg dark:bg-[#00183A] transition duration-500">
+        <div className="flex flex-col justify-between bg-blue-bg dark:bg-[#00183A] transition duration-500">
           <ExplorerContent selectedItem = {selectedItem}/>
           <Footer />
         </div>
