@@ -199,7 +199,7 @@ const ExplorerContent = ({ selectedItem }) => {
                   <pre>
                     {data.usage.length ? (
                       <Typist cursor={{ show: false }} avgTypingDelay={30}
-                      stdTypingDelay={15}>{data.usage}</Typist>
+                      stdTypingDelay={20}>{data.usage}</Typist>
                     ) : (
                       <div />
                     )}
@@ -230,7 +230,7 @@ const ExplorerContent = ({ selectedItem }) => {
                       <div className="absolute w-4 left-0 h-full rounded-l-md"></div>
                       <pre className="font-Montserrat">
                         <Typist cursor={{ show: false }} avgTypingDelay={10}
-                        stdTypingDelay={15}>{data.nb}</Typist>
+                        stdTypingDelay={1}>{data.nb}</Typist>
                       </pre>
                     </div>
                   </div>
