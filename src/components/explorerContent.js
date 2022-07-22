@@ -198,7 +198,8 @@ const ExplorerContent = ({ selectedItem }) => {
                   <div className="absolute w-4 bg-red-700 left-0 h-full rounded-l-md"></div>
                   <pre>
                     {data.usage.length ? (
-                      <Typist cursor={{ show: false }}>{data.usage}</Typist>
+                      <Typist cursor={{ show: false }} avgTypingDelay={30}
+                      stdTypingDelay={20}>{data.usage}</Typist>
                     ) : (
                       <div />
                     )}
@@ -228,7 +229,8 @@ const ExplorerContent = ({ selectedItem }) => {
                     <div className="relative bg-blue-primary text-white dark:bg-[#9bb0b54f] min-h-36 lg:max-h-80 w-11/12 rounded-md flex items-center justify-between pl-8 pr-4 mb-24">
                       <div className="absolute w-4 left-0 h-full rounded-l-md"></div>
                       <pre className="font-Montserrat">
-                        <Typist cursor={{ show: false }}>{data.nb}</Typist>
+                        <Typist cursor={{ show: false }} avgTypingDelay={10}
+                        stdTypingDelay={1}>{data.nb}</Typist>
                       </pre>
                     </div>
                   </div>
