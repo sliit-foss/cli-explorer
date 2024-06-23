@@ -20,7 +20,7 @@ yarn start
 
 ### How to Contribute
 
-  Fork the Repository: Create a fork of the repository on GitHub.
-    Create a Branch: Make a branch for your feature or bug fix.
-    Make Changes: Implement your changes and commit them with clear and concise messages.
-    Create a Pull Request: Submit a pull request to the main repository with a description of your changes.
+  - Fork the Repository: Create a fork of the repository on GitHub.
+  - Create a Branch: Make a branch for your feature or bug fix.
+  - Make Changes: Implement your changes and commit them with clear and concise messages.
+  - Create a Pull Request: Submit a pull request to the main repository with a description of your changes.
