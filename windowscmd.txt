@@ -1,0 +1,15 @@
+
+#this command allow run unasign command in current powershell session
+Set-ExecutionPolicy Bypass -Scope Process -Force
+
+
+#this command set security protacol and download powershell script for download chocolety
+[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+
+#command for check chocolatey vertion
+chocho -v
+
+
+#command for install nodejs using chocolety
+choco install nodejs.install
