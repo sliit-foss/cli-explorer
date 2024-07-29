@@ -24,3 +24,6 @@ yarn.lock
 
 
 .history/
+
+# IDE specific folder
+.idea
