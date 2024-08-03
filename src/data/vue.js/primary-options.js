@@ -1,3 +1,5 @@
+import Shorter from "util/Shorter";
+
 const options = [
   { value: "create", label: "create" },
   { value: "ui", label: "ui" },
@@ -11,12 +13,4 @@ const options = [
   { value: "upgrade", label: "upgrade" },
 ];
 
-export const primaryOptions = options.sort((x, y) => {
-  if (x.value < y.value) {
-    return -1;
-  }
-  if (x.value > y.value) {
-    return 1;
-  }
-  return 0;
-});
+export const primaryOptions = options.sort(Shorter);
