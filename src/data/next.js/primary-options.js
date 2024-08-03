@@ -1,4 +1,4 @@
-import Shorter from "util/Shorter";
+import AlphabeticalSort from "util/AlphabeticalSort";
 
 const options = [
   { value: 'build', label: 'build' },
@@ -8,5 +8,5 @@ const options = [
   { value: 'info', label: 'info' },
 ];
 
-export const primaryOptions = options.sort(Shorter);
+export const primaryOptions = options.sort(AlphabeticalSort);
 

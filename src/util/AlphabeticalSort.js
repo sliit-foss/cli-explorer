@@ -1,4 +1,4 @@
-function Shorter(x, y) {
+function alphabeticalSort(x, y) {
 if (x.value < y.value) {
     return -1;
   }
@@ -8,4 +8,4 @@ if (x.value < y.value) {
   return 0;
 }
 
-export default Shorter;
+export default alphabeticalSort;
