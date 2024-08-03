@@ -1,4 +1,4 @@
-import AlphabeticalSort from "util/AlphabeticalSort";
+import AlphabeticalSort from "utils/AlphabeticalSort";
 
 const options = [
   { value: 'install', label: 'install' },
