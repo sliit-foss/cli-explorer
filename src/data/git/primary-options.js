@@ -1,4 +1,4 @@
-import AlphabeticalSort from "utils/AlphabeticalSort";
+import AlphabeticalSort from "utils/alphabetical-sort";
 
 const options = [
   { value: 'add', label: 'add' },
