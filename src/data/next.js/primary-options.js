@@ -1,3 +1,5 @@
+import AlphabeticalSort from "utils/alphabetical-sort";
+
 const options = [
   { value: 'build', label: 'build' },
   { value: 'development', label: 'development' },
@@ -6,13 +8,5 @@ const options = [
   { value: 'info', label: 'info' },
 ];
 
-export const primaryOptions = options.sort((x, y) => {
-  if (x.value < y.value) {
-    return -1;
-  }
-  if (x.value > y.value) {
-    return 1;
-  }
-  return 0;
-});
+export const primaryOptions = options.sort(AlphabeticalSort);
 
