@@ -1,4 +1,4 @@
-function alphabeticalSort(x, y) {
+function lexicographicalSort(x, y) {
   if (x.value < y.value) {
     return -1;
   }
@@ -10,4 +10,4 @@ function alphabeticalSort(x, y) {
   return 0;
 }
 
-export default alphabeticalSort;
+export default lexicographicalSort;

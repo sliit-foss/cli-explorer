@@ -1,4 +1,4 @@
-import AlphabeticalSort from "utils/alphabetical-sort";
+import lexicograhicalSort from "utils/lexicograhical-sort";
 
 const options = [
   { value: 'list', label: 'list' },
@@ -11,4 +11,4 @@ const options = [
   { value: 'display', label: 'display' },
 ];
 
-export const primaryOptions = options.sort(AlphabeticalSort);
+export const primaryOptions = options.sort(lexicograhicalSort);
