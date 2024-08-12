@@ -1,4 +1,4 @@
-import lexicograhicalSort from "utils/lexograhical-sort";
+import lexicograhicalSort from "utils/lexicograhical-sort";
 
 const options = [
   { value: 'install', label: 'install' },
